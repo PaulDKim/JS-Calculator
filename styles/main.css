@@ -1,0 +1,59 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  background-color: #FEECE2;
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.app-container .calculator {
+  border: 0.25rem solid #AF8A75;
+  width: 350px;
+  height: 550px;
+  background-color: white;
+  display: grid;
+}
+.app-container .calculator .output {
+  border: 1px solid red;
+  display: grid;
+  grid-template-rows: 25% 75%;
+  margin: 0.5rem;
+}
+.app-container .calculator .output .previousOp {
+  display: flex;
+  justify-content: flex-end;
+}
+.app-container .calculator .output .currentOp {
+  display: flex;
+  justify-content: flex-end;
+}
+.app-container .calculator .button-group {
+  border: 1px solid blue;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 0.5rem;
+}
+.app-container .calculator .button-group button {
+  background-color: white;
+  border: 0px;
+}
+.app-container .calculator .button-group button:hover {
+  background-color: red;
+  cursor: pointer;
+}
+.app-container .calculator .button-group .grid-span-2 {
+  grid-row: span 2;
+  background-color: #FEECE2;
+  color: #FF8B4F;
+}/*# sourceMappingURL=main.css.map */
