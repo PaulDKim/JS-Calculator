@@ -1,40 +1,79 @@
-// Gives each button an event listener. 
-let button = document.getElementsByTagName('button');
+// Select buttons and display elements
+let numberButtons = document.querySelectorAll('[data-number]');
+let operationButtons = document.querySelectorAll('[data-operation]')
+let clearButton = document.querySelector('[data-clear]');
+let equalButton = document.querySelector('[data-equals]');
+let previousOperandDisplay = document.querySelector('[data-previous-operand]');
+let currentOperandDisplay = document.querySelector('[data-current-operand]');
 
-Array.from(button).forEach(x => {
-    return x.addEventListener('click', buttonClick);
+// Define calculator class
+class Calculator {
+    constructor(previousOperandDisplay, currentOperandDisplay) {
+        this.previousOperandDisplay = previousOperandDisplay;
+        this.currentOperandDisplay = currentOperandDisplay;
+        this.currentOperand = '';
+        this.previousOperand = '';
+    }
+
+    clear() {
+        this.previousOperand = '';
+        this.currentOperand = '';
+    }
+
+    delete() {
+        let numArray = this.currentOperand.split('');
+    }
+
+    append(number) {
+        this.currentOperand += number;
+    }
+
+    operation(operator) {
+        this.previousOperand = this.currentOperand + operator;
+        this.currentOperandDisplay.innerText = '';
+        this.currentOperand = '';
+    }
+
+    compute() {
+        this.result = this.previousOperand + this.currentOperand;
+        this.previousOperand = '';
+        this.currentOperand = eval(this.result);
+    }
+
+    updateScreen() {
+        this.currentOperandDisplay.innerText = this.currentOperand;
+        this.previousOperandDisplay.innerText = this.previousOperand;
+    }
+
+}
+
+// Declare calculator object
+const myCalculator = new Calculator(previousOperandDisplay, currentOperandDisplay);
+
+// Mapping the number buttons
+numberButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        myCalculator.append(button.innerText);
+        myCalculator.updateScreen();
+    })
+});
+
+// Mapping the clear button 
+clearButton.addEventListener('click', () => {
+    myCalculator.clear();
+    myCalculator.updateScreen();
 })
 
-// Should determine what kind of button it is, when you clicked on it. 
-function buttonClick(event) {
-    let buttonValue = event.target.textContent;
-    let prevOp = document.querySelectorAll(".previousOp")[0];
-    let currentOp = document.querySelectorAll(".currentOp")[0];
+// Mapping the operation buttons 
+operationButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        myCalculator.operation(button.innerText);
+        myCalculator.updateScreen();
+    })
+})
 
-    // Checks if the button is a number 
-    if (Number.isInteger(parseInt(buttonValue))) {
-        currentOp.textContent += buttonValue;
-    }
-
-    // Checks if the button clicked is "C"
-    if (buttonValue == "C") {
-        currentOp.textContent = "";
-        prevOp.textContent = "";
-    }
-
-    // Checks if the button clicked is an operator
-    if (buttonValue == "+") {
-        let content = document.getElementsByClassName('currentOp')[0].textContent
-
-        prevOp.textContent = content + "+"
-        currentOp.textContent = "";
-    }
-
-    if (buttonValue == "=") {
-        let calcString = prevOp.textContent + currentOp.textContent;
-        let calculation = eval(calcString);
-
-        prevOp.textContent = "";
-        currentOp.textContent = calculation;
-    }
-}
+// Mapping the equals button 
+equalButton.addEventListener('click', () => {
+    myCalculator.compute();
+    myCalculator.updateScreen();
+})
