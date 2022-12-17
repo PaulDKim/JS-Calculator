@@ -2,6 +2,7 @@
 let numberButtons = document.querySelectorAll('[data-number]');
 let operationButtons = document.querySelectorAll('[data-operation]')
 let clearButton = document.querySelector('[data-clear]');
+let deleteButton = document.querySelector('[data-delete]')
 let equalButton = document.querySelector('[data-equals]');
 let previousOperandDisplay = document.querySelector('[data-previous-operand]');
 let currentOperandDisplay = document.querySelector('[data-current-operand]');
@@ -21,7 +22,8 @@ class Calculator {
     }
 
     delete() {
-        let numArray = this.currentOperand.split('');
+        let numArray = this.currentOperand.split('').slice(0, -1);
+        this.currentOperand = numArray;
     }
 
     append(number) {
@@ -62,7 +64,7 @@ numberButtons.forEach(button => {
 clearButton.addEventListener('click', () => {
     myCalculator.clear();
     myCalculator.updateScreen();
-})
+});
 
 // Mapping the operation buttons 
 operationButtons.forEach(button => {
@@ -70,10 +72,16 @@ operationButtons.forEach(button => {
         myCalculator.operation(button.innerText);
         myCalculator.updateScreen();
     })
-})
+});
 
 // Mapping the equals button 
 equalButton.addEventListener('click', () => {
     myCalculator.compute();
     myCalculator.updateScreen();
-})
+});
+
+// Mapping the delete button 
+deleteButton.addEventListener('click', () => {
+    myCalculator.delete();
+    myCalculator.updateScreen();
+}); 
