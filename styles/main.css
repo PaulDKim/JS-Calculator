@@ -18,14 +18,15 @@ body {
   align-items: center;
 }
 .app-container .calculator {
-  border: 0.25rem solid #AF8A75;
+  border: 0.3rem solid #AF8A75;
   width: 350px;
   height: 550px;
+  border-radius: 2.5rem;
   background-color: white;
   display: grid;
+  padding: 1.5rem;
 }
 .app-container .calculator .output {
-  border: 1px solid red;
   display: grid;
   grid-template-rows: 25% 75%;
   margin: 0.5rem;
@@ -33,13 +34,19 @@ body {
 .app-container .calculator .output .previousOp {
   display: flex;
   justify-content: flex-end;
+  color: #ff8b4f;
+  font-size: 1.25rem;
 }
 .app-container .calculator .output .currentOp {
   display: flex;
+  background-color: #ff8b4f;
+  color: white;
+  display: flex;
   justify-content: flex-end;
+  align-items: center;
+  font-size: 2rem;
 }
 .app-container .calculator .button-group {
-  border: 1px solid blue;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   margin: 0.5rem;

@@ -21,15 +21,15 @@ body {
     align-items: center;
 
     .calculator {
-        border: 0.25rem solid $outline;
+        border: 0.30rem solid $outline;
         width: 350px;
         height: 550px;
-        // border-radius
+        border-radius: 2.5rem;
         background-color: white;
         display: grid;
+        padding: 1.5rem;
 
         .output {
-            border: 1px solid red;
             display: grid;
             grid-template-rows: 25% 75%;
             margin: 0.50rem;
@@ -37,16 +37,22 @@ body {
             .previousOp {
                 display: flex;
                 justify-content: flex-end;
+                color: #ff8b4f;
+                font-size: 1.25rem;
             }
 
             .currentOp {
                 display: flex;
+                background-color: #ff8b4f;
+                color: white;
+                display: flex;
                 justify-content: flex-end;
+                align-items: center;
+                font-size: 2rem;
             }
         }
 
         .button-group {
-            border: 1px solid blue;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             margin: 0.50rem;

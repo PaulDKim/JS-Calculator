@@ -22,7 +22,7 @@ class Calculator {
     }
 
     delete() {
-        let numArray = this.currentOperand.split('').slice(0, -1);
+        let numArray = this.currentOperand.split('').slice(0, -1).join('');
         this.currentOperand = numArray;
     }
 
