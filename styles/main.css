@@ -23,19 +23,22 @@ body {
   height: 550px;
   border-radius: 2.5rem;
   background-color: white;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   padding: 1.5rem;
 }
 .app-container .calculator .output {
   display: grid;
   grid-template-rows: 25% 75%;
-  margin: 0.5rem;
+  height: 200px;
 }
 .app-container .calculator .output .previousOp {
   display: flex;
   justify-content: flex-end;
   color: #ff8b4f;
   font-size: 1.25rem;
+  width: 100%;
+  height: 50px;
 }
 .app-container .calculator .output .currentOp {
   display: flex;
@@ -45,19 +48,23 @@ body {
   justify-content: flex-end;
   align-items: center;
   font-size: 2rem;
+  width: 100%;
+  height: 150px;
 }
 .app-container .calculator .button-group {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  margin: 0.5rem;
+  margin-top: 0px;
+  height: 100%;
 }
 .app-container .calculator .button-group button {
   background-color: white;
   border: 0px;
 }
 .app-container .calculator .button-group button:hover {
-  background-color: red;
+  background-color: #ECC8B6;
   cursor: pointer;
+  color: white;
 }
 .app-container .calculator .button-group .grid-span-2 {
   grid-row: span 2;
